@@ -1,15 +1,32 @@
-# vuejs-tutorial
+# Tutorial de Vue.js
 
 > Tutorial com as boas práticas de programação usando o Vue.js
 
-## Build Setup
+> Nesse tutorial é aplicado os seguinte conceitos:
+
+  - Components
+  - Props
+  - Events
+  - v-model
+  - Slots
+  
+Os examplos estão em [src/components](https://github.com/silasbrasil/vuejs-tutorial/tree/master/src/components)
+  
+### Start Dev-Mode
+
+``` bash
+# Instala as dependências
+npm install
+
+# Roda na porta 8080
+npm run dev
+```
+
+#### Build Setup
 
 ``` bash
 # install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
 
 # build for production with minification
 npm run build
@@ -17,5 +34,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
