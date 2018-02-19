@@ -2,7 +2,7 @@
 
 #### Tutorial com as boas práticas de programação usando o Vue.js
 
-###### Nesse tutorial é aplicado os seguinte conceitos:
+##### Nesse tutorial é aplicado os seguinte conceitos:
 
   - Components
   - Props
