@@ -1,8 +1,8 @@
 # Tutorial de Vue.js
 
-> Tutorial com as boas práticas de programação usando o Vue.js
+#### Tutorial com as boas práticas de programação usando o Vue.js
 
-> Nesse tutorial é aplicado os seguinte conceitos:
+###### Nesse tutorial é aplicado os seguinte conceitos:
 
   - Components
   - Props
@@ -12,7 +12,7 @@
   
 Os examplos estão em [src/components](https://github.com/silasbrasil/vuejs-tutorial/tree/master/src/components)
   
-### Start Dev-Mode
+#### Start Dev-Mode
 
 ``` bash
 # Instala as dependências
