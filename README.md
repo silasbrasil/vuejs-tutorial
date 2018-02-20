@@ -306,7 +306,7 @@ export default {
 
 #### Scoped Slots
 
-Scoped Slots é um forma de passar dados para serem criado dinamicamente dentro do seu componente baseado com o comtent do component sendo usado com template. Assim você pode definir como você vai renderizar o conteúdo do seu custom component.
+Scoped Slots é um forma de redenrizar dinamicamente o template passado no content do component. Assim você pode definir como você vai renderizar o conteúdo do seu component.
 
 >__ScopedSlotComponent.vue__
 
