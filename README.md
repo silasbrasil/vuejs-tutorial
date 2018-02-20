@@ -4,11 +4,17 @@
 
 ##### Nesse tutorial é aplicado os seguinte conceitos:
 
-  - Components
+  - Components (intro)
   - Props
+    - Prop definitions
+    - Validators
   - Events
   - v-model
+    - v-model in custom components
+    - Change v-model behavior
   - Slots
+    - Named Slots
+    - Scoped Slots
   
 Os examplos estão em [src/components](https://github.com/silasbrasil/vuejs-tutorial/tree/master/src/components)
   
