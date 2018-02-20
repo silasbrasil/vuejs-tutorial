@@ -268,7 +268,7 @@ Para usar vários slots é só nomear seus Slots e ao adicionar o conteúdo do c
   <div id="component">
     <h2>Título</h2>
     <slot name="slot01"></slot>
-    <p>Texto no meio do conteúdo do componente
+    <p>Texto no meio do conteúdo do componente</p>
     <slot name="slot02"></slot>
     <slot name="slot03"></slot>
   </div>
@@ -299,6 +299,57 @@ export default {
   name: 'ParentComponent',
   components: {
     'slot-component': SlotComponent 
+  }
+}
+</script>
+```
+
+#### Scoped Slots
+
+Scoped Slots é um forma de passar dados para serem criado dinamicamente dentro do seu componente baseado com o comtent do component sendo usado com template. Assim você pode definir como você vai renderizar o conteúdo do seu custom component.
+
+>__ScopedSlotComponent.vue__
+
+``` html
+<template>
+  <div class="containerList">
+    <slot name="list"
+          v-for="item in items"
+          :text="item">
+    </slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ScopedSlotComponent',
+  props: {
+    items: {
+      type: Array,
+      default: []
+    }
+  }
+}
+</script>
+```
+
+>__ParentComponent.vue__
+
+``` html
+<template>
+  <div id="parent">
+    <scoped-slot-component :items="meusItems">
+      <a slot="list" slot-scope="props">{{ props.text }}</a>
+    </scoped-slot-component>
+  </div>
+</template>
+<script>
+import ScopedSlotComponent from 'path/ScopedSlotComponent'
+
+export default {
+  name: 'ParentComponent',
+  components: {
+    'scoped-slot-component': ScopedSlotComponent 
   }
 }
 </script>
