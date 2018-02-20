@@ -16,11 +16,11 @@
     - Named Slots
     - Scoped Slots
   
-Os examplos estão em [src/components](https://github.com/silasbrasil/vuejs-tutorial/tree/master/src/components).
+Os exemplos estão em [src/components](https://github.com/silasbrasil/vuejs-tutorial/tree/master/src/components).
 
   - Props, Events e v-model: [src/components/InputText.vue](https://github.com/silasbrasil/vuejs-tutorial/blob/master/src/components/InputText.vue)
   - Named Slot: [src/components/Container.vue](https://github.com/silasbrasil/vuejs-tutorial/blob/master/src/components/Container.vue)
-  - Scoped Slot [src/components/ListRender.vue](https://github.com/silasbrasil/vuejs-tutorial/blob/master/src/components/ListRender.vue)
+  - Scoped Slot: [src/components/ListRender.vue](https://github.com/silasbrasil/vuejs-tutorial/blob/master/src/components/ListRender.vue)
   - Forma de usar esses componentes: [src/components/HomePage.vue](https://github.com/silasbrasil/vuejs-tutorial/blob/master/src/components/HomePage.vue)
 
 #### Components
