@@ -150,7 +150,7 @@ Utilizar um component com events:
   </div>
 </template>
 <script>
-import EventComponent from 'path/PropsComponent.vue'
+import EventComponent from 'path/EventComponent.vue'
 
 export default {
   name: 'OtherComponent',
@@ -212,10 +212,97 @@ export default {
 }
 </script>
 ```
-Dessa forma o v-model irá ouvir o evento *change* e a prop *checked*.
+Dessa forma o v-model irá ouvir o evento **change** e a prop **checked**.
 
 
 #### Slots
+
+Slots é uma outra característica básica dos componentes, pois é padrão que os components possam conter outros componentes. Da mesma forma que um `div` pode conter um `h2` ou uma outra `div`.
+Para que isso funcione é necessário apenas colocar a tag `<slot>` no lugar onde você quer rederizar o elemento que o seu componente conterá.
+
+>__SlotComponent.vue__
+
+``` html
+<template>
+  <div id="component">
+    <h2>Title</h2>
+    <slot></slot>
+  </div>
+</template>
+<script>
+export default {
+  name: 'SlotComponent',
+}
+</script>
+```
+
+Utilizando o SlotComponent acima:
+>__ParentComponent.vue__
+
+``` html
+<template>
+  <div id="parent">
+    <slot-component>
+      <input type="text" placeholder="input dentro do seu componente" />
+    </slot-component>
+  </div>
+</template>
+<script>
+import SlotComponent from 'path/SlotComponent'
+
+export default {
+  name: 'ParentComponent',
+  components: {
+    'slot-component': SlotComponent 
+  }
+}
+</script>
+```
+
+Para usar vários slots é só nomear seus Slots e ao adicionar o conteúdo do componente dizer para qual slot o elemento vai. Da seguinte forma:
+
+>__SlotComponent.vue__
+
+``` html
+<template>
+  <div id="component">
+    <h2>Título</h2>
+    <slot name="slot01"></slot>
+    <p>Texto no meio do conteúdo do componente
+    <slot name="slot02"></slot>
+    <slot name="slot03"></slot>
+  </div>
+</template>
+<script>
+export default {
+  name: 'SlotComponent',
+}
+</script>
+```
+
+>__ParentComponent.vue__
+
+``` html
+<template>
+  <div id="parent">
+    <slot-component>
+      <p slot="slot01"></p>
+      <h3 slot="slot02"></h3>
+      <input type="text" slot="slot02" />
+    </slot-component>
+  </div>
+</template>
+<script>
+import SlotComponent from 'path/SlotComponent'
+
+export default {
+  name: 'ParentComponent',
+  components: {
+    'slot-component': SlotComponent 
+  }
+}
+</script>
+```
 
 #### Start Dev-Mode
 
