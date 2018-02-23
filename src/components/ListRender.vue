@@ -2,7 +2,8 @@
   <div class="containerList">
     <slot name="list"
           v-for="item in items"
-          :text="item">
+          :text="item"
+          text2="sssss" >
     </slot>
   </div>
 </template>

@@ -9,6 +9,10 @@
 <script>
 export default {
   name: 'InputText',
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
   props: {
     myPlaceholder: {
       type: String,
@@ -17,11 +21,13 @@ export default {
     value: {
       type: String,
       default: ''
-    }
+    },
+    checked: String,
   },
   methods: {
     onType(value) {
       this.$emit('input', value)
+      this.$emit('change', value)
     }
   }
 }

@@ -1,14 +1,17 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h3>{{ textInput }}</h3>
+    <button @click="limparTextInput">Limpa Text Input</button>
     <div>
       <input-text />
 
-      <input-text placeholder="Com placeholder" /> 
+      <input-text myPlaceholder="Com placeholder" /> 
 
-      <input-text 
-        placeholder="Com v-model"
-        v-model="inputText">
+      <input-text
+        name="input de texto"
+        placeholder="Correta"
+        v-model="textInput">
       </input-text>
 
       <h3>{{ inputText }}</h3>
@@ -21,7 +24,9 @@
     </custom-component>
     
     <list-render :items="meusItems">
-      <a slot="list" slot-scope="props">{{ props.text }}</a>
+      <a slot="list"
+        slot-scope="vars">{{ vars.text }} - {{ vars.text2 }}
+      </a>
     </list-render>
   </div>
 </template>
@@ -41,6 +46,7 @@ export default {
   data () {
     return {
       msg: 'Que tal esse tutorial de Vue.js?',
+      textInput: '',
       inputText: 'v-model running',
       meusItems: [
         'Home',
@@ -49,6 +55,11 @@ export default {
         'About',
         'Contact',
       ]
+    }
+  },
+  methods: {
+    limparTextInput () {
+      this.textInput = '';
     }
   }
 }
