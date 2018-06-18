@@ -59,11 +59,95 @@ export default {
     }
   },
   created() {
-    this.getImageMetaData()
+    this.downloadProgress()
   },
   methods: {
     limparTextInput () {
       this.textInput = '';
+    },
+    downloadProgress() {
+      const urlImage = 'https://semantic-ui.com/images/avatar2/large/elyse.png'
+      const url4KImage = 'https://images.unsplash.com/photo-1494249465471-5655b7878482?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=191559dc1cae3f8967d568dfd8a77093&auto=format&fit=crop&w=1350&q=80'
+      this.getImageByStream(url4KImage)
+
+      const urlJson = 'https://reqres.in/api/users/1'
+      // this.getJsonByStream(urlJson)
+      // this.getJsonByStream(urlJson)
+    },
+    getJsonByStream(url, on, end, error) {
+      const oReq = new XMLHttpRequest()
+      oReq.open('GET', url, true)
+      oReq.responseType = "arraybuffer"
+
+      console.log('CHAMOU')
+
+      oReq.onload = event => {
+        let arrayBuffer = oReq.response // Note: not oReq.responseText
+        let stringResult = ''
+        if (arrayBuffer) {
+          let byteArray = new Uint8Array(arrayBuffer)
+          let total = 0
+          let lastResult = 0
+          for (total = 0; total < byteArray.byteLength; total++) {
+            if ((lastResult + 10) <= total) {
+              lastResult = total
+              // console.log('bytes baixados: ', lastResult)
+            }
+            stringResult = String.fromCharCode.apply(String, byteArray)
+          }
+          // console.log('Download JSON finalizado')
+          // console.log('Total: ', total)
+          // console.log(JSON.parse(stringResult).data)
+        }
+      }
+
+      oReq.onprogress = event => {
+        console.log(event)
+        if (event.lengthComputable) {
+          console.log(event.loaded, event.total)
+          const percentComplete = event.loaded / event.total * 100;
+          console.log(percentComplete)
+        }
+      }
+
+      oReq.onloadend = event => {
+        console.log('finished')
+      }
+
+      oReq.send(null);
+    },
+    getImageByStream(imageUrl) {
+      const oReq = new XMLHttpRequest()
+      oReq.open('GET', imageUrl, true)
+      oReq.responseType = "arraybuffer"
+
+      oReq.onload = event => {
+        let arrayBuffer = oReq.response
+        if (arrayBuffer) {
+          const byteArray = new Uint8Array(arrayBuffer)
+          let total = 0
+          let lastResult = 0
+          for (total = 0; total < byteArray.byteLength; total++) {
+            if ((lastResult + 10) <= total) {
+              lastResult = total
+              // console.log('bytes baixados: ', lastResult)
+            }
+          }
+          // console.log('Download Image finalizado')
+          // console.log('Total: ', total)
+        }
+      }
+
+      oReq.onprogress = event => {
+        // console.log(event)
+        if (event.lengthComputable) {
+          // console.log(event.loaded, event.total)
+          const percentComplete = event.loaded / event.total * 100;
+          console.log(percentComplete)
+        }
+      }
+
+      oReq.send()
     },
     getImageMetaData() {
       const urlImage = 'https://semantic-ui.com/images/avatar2/large/elyse.png'
@@ -71,7 +155,6 @@ export default {
         .then(response => {
           console.log(response.data)
         })
-      // console.log(img.filesize)
     },
     testSerialPromises() {
       let promiseArray = [
