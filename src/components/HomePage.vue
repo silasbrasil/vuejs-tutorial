@@ -59,31 +59,42 @@ export default {
     }
   },
   created() {
-    let promiseArray = [
-      axios.get('https://reqres.in/api/users/1').then(result => result.data.data),
-      axios.get('https://reqres.in/api/users/2').then(result => result.data.data),
-      axios.get('https://reqres.in/api/users/3').then(result => result.data.data),
-      axios.get('https://reqres.in/api/users/4').then(result => result.data.data),
-      axios.get('https://reqres.in/api/users/5').then(result => result.data.data),
-      axios.get('https://reqres.in/api/users/6').then(result => result.data.data)
-    ]
-
-    const promiseSerial = promisesList =>
-      promisesList.reduce((oldPromise, currPromise) => {
-        return oldPromise.then(dataFromAxios => {
-          console.log(dataFromAxios)
-          return currPromise.then()
-        })
-      }, Promise.resolve())
-
-    promiseSerial(promiseArray)
-      .then(result => {
-        console.log('FIM', result)
-      })
+    this.getImageMetaData()
   },
   methods: {
     limparTextInput () {
       this.textInput = '';
+    },
+    getImageMetaData() {
+      const urlImage = 'https://semantic-ui.com/images/avatar2/large/elyse.png'
+      axios.get(urlImage, { responseType: 'blob' })
+        .then(response => {
+          console.log(response.data)
+        })
+      // console.log(img.filesize)
+    },
+    testSerialPromises() {
+      let promiseArray = [
+        axios.get('https://reqres.in/api/users/1').then(result => result.data.data),
+        axios.get('https://reqres.in/api/users/2').then(result => result.data.data),
+        axios.get('https://reqres.in/api/users/3').then(result => result.data.data),
+        axios.get('https://reqres.in/api/users/4').then(result => result.data.data),
+        axios.get('https://reqres.in/api/users/5').then(result => result.data.data),
+        axios.get('https://reqres.in/api/users/6').then(result => result.data.data)
+      ]
+
+      const promiseSerial = promisesList =>
+        promisesList.reduce((oldPromise, currPromise) => {
+          return oldPromise.then(dataFromAxios => {
+            console.log(dataFromAxios)
+            return currPromise.then()
+          })
+        }, Promise.resolve())
+
+      promiseSerial(promiseArray)
+        .then(result => {
+          console.log('FIM', result)
+        })
     }
   }
 }
